@@ -13,7 +13,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Avatar } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import { useStateValue } from './StateProvider';
-import { Link } from 'react-router-dom';
 
 function Header() {
     const [{ user }, dispatch] = useStateValue();
@@ -21,13 +20,11 @@ function Header() {
     <div className="header">
         <div className="header__left">
             <figure>
-                <Link to="/">
-                    <img 
-                        src="https://i.imgur.com/0C6eXqX.png" 
-                        alt=""
-                    />
-                    <figcaption>Birdbook</figcaption>
-                </Link>
+                <img 
+                    src="https://i.imgur.com/0C6eXqX.png" 
+                    alt=""
+                />
+                <figcaption>Birdbook</figcaption>
             </figure>
             
             <div className="header__input">
