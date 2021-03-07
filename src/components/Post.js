@@ -2,8 +2,28 @@ import { Avatar } from '@material-ui/core';
 import { AccountCircle, ChatBubbleOutline, ExpandMoreOutlined, NearMe, ThumbUp } from '@material-ui/icons';
 import React from 'react';
 import '../css/Post.css'
+import LikesBar from './LikesBar';
+import db from '../firebase';
+import { useStateValue } from './StateProvider';
+import firebase from 'firebase';
 
-function Post({ profilePic, image, username, timestamp, message }) {
+function Post({ postId, profilePic, image, username, timestamp, message, likes }) {
+    const [{ user }, dispatch] = useStateValue();
+    
+    // Like functionality
+    const addLike = () => {
+        db.collection('posts').doc(postId).update({
+            likes: firebase.firestore.FieldValue.arrayUnion(user.email)
+        });
+    };
+
+    // Unlike functionality
+    const unlike = () => {
+        db.collection('posts').doc(postId).update({
+            likes: firebase.firestore.FieldValue.arrayRemove(user.email)
+        });
+    };
+
     return (
         <div className="post">
             <div className="post__top">
@@ -20,16 +40,29 @@ function Post({ profilePic, image, username, timestamp, message }) {
             <div className="post__bottom">
                 <p>{message}</p>
             </div>
-
+            
             <div className="post__image">
                 <img src={image} alt="" />
             </div>
 
+            {likes.length > 0 ? 
+                <LikesBar likeNumber={likes.length} />
+            : null
+            }
+            
             <div className="post__options">
-                <div className="post__option">
-                    <ThumbUp />
-                    <p>Like</p>
-                </div>
+                {
+                    likes.includes(user.email) ? 
+                    <div className="post__option" style={{color: "#2e81f4"}} onClick={unlike}>
+                        <ThumbUp />
+                        <p>Like</p>
+                    </div>
+                    :
+                    <div className="post__option" onClick={addLike}>
+                        <ThumbUp />
+                        <p>Like</p>
+                    </div>
+                }
                 <div className="post__option">
                     <ChatBubbleOutline />
                     <p>Comment</p>
