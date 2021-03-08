@@ -22,7 +22,8 @@ function MessageSender() {
             profilePic: user.photoURL,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             username: user.displayName,
-            image: imageUrl
+            image: imageUrl,
+            likes: []
         })
 
         setInput("");
