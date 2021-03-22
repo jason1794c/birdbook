@@ -30,4 +30,4 @@ Birdbook is a website that is created to look like a replica of the social media
 
 ### Like/Unlike
 * User can like/unlike posts that are displayed on the website
-* ![alt like/unlike](https://github.com/jason1794c/birdbook/blob/main/src/images/like-unlike.gif)
+![alt like/unlike](https://github.com/jason1794c/birdbook/blob/main/src/images/like-unlike.gif)
