@@ -16,3 +16,18 @@ Birdbook is a website that is created to look like a replica of the social media
 1. Open a terminal and go to the root folder.
 2. Install the dependencies using `npm install`.
 3. Start the client with `npm start`.
+
+## Features
+### Sign In
+* User can sign in with their Google account
+
+![alt sign in](https://github.com/jason1794c/birdbook/blob/main/src/images/sign-in.gif)
+
+### Posting
+* User can post their thoughts and an optional image
+
+![alt posting](https://github.com/jason1794c/birdbook/blob/main/src/images/post.gif)
+
+### Like/Unlike
+* User can like/unlike posts that are displayed on the website
+* ![alt like/unlike](https://github.com/jason1794c/birdbook/blob/main/src/images/like-unlike.gif)
