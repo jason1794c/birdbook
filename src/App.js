@@ -7,7 +7,7 @@ import { useStateValue } from './components/StateProvider';
 import Widgets from './components/Widgets';
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   return (
     <div className="app">
