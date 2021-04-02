@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/Header.css';
+import { actionTypes } from './reducer';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import FlagIcon from '@material-ui/icons/Flag';
@@ -10,12 +12,27 @@ import AddIcon from '@material-ui/icons/Add';
 import ForumIcon from '@material-ui/icons/Forum';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Avatar } from '@material-ui/core';
+import { Avatar, Menu, MenuItem } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import { useStateValue } from './StateProvider';
 
 function Header() {
     const [{ user }, dispatch] = useStateValue();
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = event => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const logout = () => {
+        dispatch({type: actionTypes.LOGOUT_USER});
+        handleClose();
+    }
+
     return (
     <div className="header">
         <div className="header__left">
@@ -69,10 +86,23 @@ function Header() {
             <IconButton>
                 <NotificationsActiveIcon />
             </IconButton>
-            <IconButton>
+            <IconButton aria-controls='simple-menu' aria-haspopup='true' onClick={handleClick}>
                 <ExpandMoreIcon />
             </IconButton>
-
+            <Menu
+                id='simple-menu'
+                anchorEl={anchorEl}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center'
+                }}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={logout}><ExitToAppIcon style={{marginRight: '10px'}} />Logout</MenuItem>
+            </Menu>
         </div>
     </div>
     )
