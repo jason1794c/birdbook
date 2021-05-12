@@ -23,7 +23,8 @@ function MessageSender() {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             username: user.displayName,
             image: imageUrl,
-            likes: []
+            likes: [],
+            comments: []
         })
 
         setInput("");
