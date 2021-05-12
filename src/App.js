@@ -3,7 +3,7 @@ import Feed from './components/Feed';
 import Header from './components/Header';
 import Login from './components/Login';
 import Sidebar from './components/Sidebar';
-import { useStateValue } from './components/StateProvider';
+import { useStateValue } from './context/StateProvider';
 import Widgets from './components/Widgets';
 
 function App() {

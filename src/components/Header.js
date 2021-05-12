@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Header.css';
-import { actionTypes } from './reducer';
+import { actionTypes } from '../context/reducer';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
@@ -14,7 +14,7 @@ import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Avatar, Menu, MenuItem } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
-import { useStateValue } from './StateProvider';
+import { useStateValue } from '../context/StateProvider';
 
 function Header() {
     const [{ user }, dispatch] = useStateValue();

@@ -4,7 +4,7 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import React, { useState } from 'react';
 import '../css/MessageSender.css';
-import { useStateValue } from './StateProvider';
+import { useStateValue } from '../context/StateProvider';
 import db from '../firebase';
 import firebase from 'firebase';
 
