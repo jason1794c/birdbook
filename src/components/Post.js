@@ -4,7 +4,7 @@ import React from 'react';
 import '../css/Post.css'
 import LikesBar from './LikesBar';
 import db from '../firebase';
-import { useStateValue } from './StateProvider';
+import { useStateValue } from '../context/StateProvider';
 import firebase from 'firebase';
 
 function Post({ postId, profilePic, image, username, timestamp, message, likes }) {
@@ -51,18 +51,17 @@ function Post({ postId, profilePic, image, username, timestamp, message, likes }
             }
             
             <div className="post__options">
-                {
-                    likes.includes(user.email) ? 
-                    <div className="post__option" style={{color: "#2e81f4"}} onClick={unlike}>
-                        <ThumbUp />
-                        <p>Like</p>
-                    </div>
-                    :
-                    <div className="post__option" onClick={addLike}>
-                        <ThumbUp />
-                        <p>Like</p>
-                    </div>
-                }
+                <div 
+                    className="post__option"
+                    style={likes.includes(user.email) ? {
+                        color: "#2e81f4"
+                    }: null}
+                    onClick={likes.includes(user.email) ? unlike : addLike}
+                >
+                    <ThumbUp />
+                    <p>Like</p>
+                </div>
+
                 <div className="post__option">
                     <ChatBubbleOutline />
                     <p>Comment</p>
