@@ -7,7 +7,7 @@ import db from '../firebase';
 import { useStateValue } from '../context/StateProvider';
 import firebase from 'firebase';
 
-function Post({ postId, profilePic, image, username, timestamp, message, likes }) {
+function Post({ postId, profilePic, image, username, timestamp, message, likes, comments }) {
     const [{ user }, dispatch] = useStateValue();
     
     // Like functionality
